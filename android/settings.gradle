@@ -1,0 +1,3 @@
+rootProject.name = 'CloudCarHome'
+
+include ':app'

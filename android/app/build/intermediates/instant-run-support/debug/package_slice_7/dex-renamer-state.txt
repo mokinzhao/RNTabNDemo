@@ -1,0 +1,4 @@
+#Tue Dec 19 15:30:30 CST 2017
+base.0=/Users/mokinzhao/work/CloudCarHome/CloudCarHome/android/app/build/intermediates/transforms/dexMerger/debug/7
+renamed.0=classes.dex
+file.0=/Users/mokinzhao/work/CloudCarHome/CloudCarHome/android/app/build/intermediates/transforms/dexMerger/debug/7/classes.dex

@@ -1,18 +1,11 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mokinzhao/work/CloudCarHome/CloudCarHome/android/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/b699bb23da941ae215704315bcdee1ce/res/values-h720dp/values-h720dp.xml",
+                    "source": "/Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "4",
-                        "startOffsets": "283",
-                        "endColumns": "66",
-                        "endOffsets": "345"
-                    },
-                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",

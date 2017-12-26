@@ -1,19 +1,11 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mokinzhao/work/CloudCarHome/CloudCarHome/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v12/values-v12.xml",
+            "outputFile": "/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v12/values-v12.xml",
             "map": [
                 {
-                    "source": "/Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/b699bb23da941ae215704315bcdee1ce/res/values-v12/values-v12.xml",
+                    "source": "/Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/res/values-v12/values-v12.xml",
                     "from": {
-                        "startLines": "4,7,10,11",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "285,509,709,828",
-                        "endLines": "6,9,10,11",
-                        "endColumns": "12,12,118,94",
-                        "endOffsets": "504,704,823,918"
-                    },
-                    "to": {
                         "startLines": "2,5,8,9",
                         "startColumns": "4,4,4,4",
                         "startOffsets": "55,279,479,598",

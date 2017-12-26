@@ -1,3 +1,2 @@
-dependencies: \
-  /Users/mokinzhao/work/CloudCarHome/CloudCarHome/ios/CloudCarHome/main.m \
-  /Users/mokinzhao/work/CloudCarHome/CloudCarHome/ios/CloudCarHome/AppDelegate.h
+dependencies: /Users/mokinzhao/work/RNTabNDemo/ios/CloudCarHome/main.m \
+  /Users/mokinzhao/work/RNTabNDemo/ios/CloudCarHome/AppDelegate.h

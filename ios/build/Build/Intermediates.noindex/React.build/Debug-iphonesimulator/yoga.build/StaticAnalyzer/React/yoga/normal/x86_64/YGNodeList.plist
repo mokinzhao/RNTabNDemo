@@ -6,7 +6,7 @@
 <string>Apple LLVM version 9.0.0 (clang-900.0.39.2)</string>
  <key>files</key>
  <array>
-  <string>/Users/mokinzhao/work/CloudCarHome/CloudCarHome/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.c</string>
+  <string>/Users/mokinzhao/work/RNTabNDemo/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.c</string>
  </array>
  <key>diagnostics</key>
  <array>

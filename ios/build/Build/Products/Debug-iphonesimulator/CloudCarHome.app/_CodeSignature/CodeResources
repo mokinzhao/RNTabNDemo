@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		1v+YLFW45DVJwvWKCsmPQPtiPmI=
+		RQ71R++SwxOdpDeoGcG2IChACgw=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
@@ -63,11 +63,11 @@
 		</data>
 		<key>PlugIns/CloudCarHomeTests.xctest.dSYM/Contents/Resources/DWARF/CloudCarHomeTests</key>
 		<data>
-		S6R7IDVNeBeVUEaEQpKf4eCPQm4=
+		5OgOs1q16tKhR+7CYJExMQTba0k=
 		</data>
 		<key>PlugIns/CloudCarHomeTests.xctest/CloudCarHomeTests</key>
 		<data>
-		gX45nAD8j7BjrN6od0sh0ayxwbM=
+		Wm3/+eZX/GEa/Y/jQetvK2wVyEk=
 		</data>
 		<key>PlugIns/CloudCarHomeTests.xctest/Info.plist</key>
 		<data>
@@ -84,11 +84,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1v+YLFW45DVJwvWKCsmPQPtiPmI=
+			RQ71R++SwxOdpDeoGcG2IChACgw=
 			</data>
 			<key>hash2</key>
 			<data>
-			XEqv997004Lca12wzbt0b1/Qul28UxMiALOSPu7Bdk8=
+			7Dy3STnViVpjB3LtoZqAndP1X78Vx1vvzuAXXeoYgmU=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
@@ -207,22 +207,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S6R7IDVNeBeVUEaEQpKf4eCPQm4=
+			5OgOs1q16tKhR+7CYJExMQTba0k=
 			</data>
 			<key>hash2</key>
 			<data>
-			uwIYxt6UGH5d4RctQjS2RlOXl4RJ/7jo65Zru1I31h0=
+			5WXpSCR5sJypdHLfyCU8ZKfeZfSjKQMARnAy1NbAVL4=
 			</data>
 		</dict>
 		<key>PlugIns/CloudCarHomeTests.xctest/CloudCarHomeTests</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gX45nAD8j7BjrN6od0sh0ayxwbM=
+			Wm3/+eZX/GEa/Y/jQetvK2wVyEk=
 			</data>
 			<key>hash2</key>
 			<data>
-			g5wkEnXnvGjSp5bxoyJjUO2NM6IqDnCNkvwzt/N/TMw=
+			k0MjI/5vcag1erwwbQCaH6gttShA51s3WwFPKrQUl24=
 			</data>
 		</dict>
 		<key>PlugIns/CloudCarHomeTests.xctest/Info.plist</key>

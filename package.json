@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "node node_modules/react-native/local-cli/cli.js bundle --platform android --dev false --entry-file index.android.js  --bundle-output android/app/src/main/assets/index.android.bundle  --assets-dest android/app/src/main/res/",
     "test": "jest"
   },
   "dependencies": {
     "flow-bin": "^0.61.0",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
-    "react-native": "0.50.1",
+    "react-native": "0.48",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-splash-screen": "^3.0.6",
     "react-native-swiper": "^1.5.13",

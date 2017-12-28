@@ -5,7 +5,7 @@ INJECTED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManif
 INJECTED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:1:1-32:12
 INJECTED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:1:1-32:12
 MERGED from [:react-native-splash-screen] /Users/mokinzhao/work/RNTabNDemo/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-17:12
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:2:1-15:12
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:2:1-15:12
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/AndroidManifest.xml:17:1-27:12
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/3b3c8a006ea319d6b7fc2871fc159e73/AndroidManifest.xml:10:1-18:12
 MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/32989d04ab82b1094abff3a086133477/AndroidManifest.xml:2:1-9:12
@@ -42,8 +42,8 @@ ADDED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest
 		ADDED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:7:5-77
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-sdk
@@ -52,8 +52,8 @@ INJECTED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManif
 INJECTED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:9:5-11:41
 MERGED from [:react-native-splash-screen] /Users/mokinzhao/work/RNTabNDemo/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-splash-screen] /Users/mokinzhao/work/RNTabNDemo/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/AndroidManifest.xml:21:5-23:78
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/3b3c8a006ea319d6b7fc2871fc159e73/AndroidManifest.xml:14:5-16:41
@@ -94,8 +94,8 @@ application
 ADDED from /Users/mokinzhao/work/RNTabNDemo/android/app/src/main/AndroidManifest.xml:13:5-30:19
 MERGED from [:react-native-splash-screen] /Users/mokinzhao/work/RNTabNDemo/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [:react-native-splash-screen] /Users/mokinzhao/work/RNTabNDemo/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.50.1] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.50.1.aar/8d1b892eb07e87e9018aa7cd0d4e2293/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.48.4] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/react-native-0.48.4.aar/ccd4e029714673857d956a9f866b6223/AndroidManifest.xml:13:5-20
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/4ed664c8394b8743f9ed6a30c15b6b25/AndroidManifest.xml:25:5-20
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/mokinzhao/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/093011c2a47383579b60fe5ec9b07781/AndroidManifest.xml:3:3-17

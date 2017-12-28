@@ -1,4 +1,4 @@
-#Mon Dec 25 17:06:06 CST 2017
-base.0=/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/transforms/dexMerger/debug/85
+#Thu Dec 28 15:13:55 CST 2017
+base.0=/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/transforms/dexMerger/debug/9
 path.0=classes.dex
 renamed.0=classes.dex

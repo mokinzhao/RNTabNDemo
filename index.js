@@ -6,23 +6,29 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react'
-import { AppRegistry } from 'react-native'
+import React, {PureComponent} from 'react';
+import {AppRegistry} from 'react-native';
 
 import RootScene from './src/RootScene';
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
 export default class App extends PureComponent {
-    render() {
-        return (
-            <RootScene />
-        );
+  render () {
+    return <RootScene />;
+  }
+  componentDidMount () {
+    //初始化非开发环境关闭所有log
+    if (!__DEV__) {
+      global.console = {
+        info: () => {},
+        log: () => {},
+        warn: () => {},
+        error: () => {},
+      };
     }
-    componentDidMount() {
-    	// do stuff while splash screen is shown
-        // After having done stuff (such as async tasks) hide the splash screen
-         SplashScreen.hide();
-    }
-
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide ();
+  }
 }
 
-AppRegistry.registerComponent('CloudCarHome', () => App);
+AppRegistry.registerComponent ('CloudCarHome', () => App);

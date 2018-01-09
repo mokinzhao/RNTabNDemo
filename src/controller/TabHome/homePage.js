@@ -27,12 +27,14 @@ import {
 
 import {screen, system} from '../../common';
 import api from '../../api';
+import HttpUtils from '../../utils/HttpUtils';
 
 import Swiper from 'react-native-swiper';
 const loading = require ('../../res/img/Home/loading.gif');
 import HomeMenuView from './HomeMenuView';
 import HomeGridView from './HomeGridView';
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell';
+
 const Slide = props => {
   return (
     <View style={styles.slide}>
@@ -103,8 +105,8 @@ class HomeScene extends Component {
     };
     // this.loadHandle = this.loadHandle.bind (this);
     {
-      (this: any).loadHandle = this.loadHandle.bind (this);
-   }
+       (this: any).loadHandle = this.loadHandle.bind (this);
+    }
     {
        (this: any).requestData = this.requestData.bind (this);
     }
@@ -142,6 +144,8 @@ class HomeScene extends Component {
 
     this.requestDiscount ();
     this.requestRecommend ();
+    this.requestLogin ();
+    this.requestLogin2();
   }
 
   async requestRecommend () {
@@ -175,6 +179,34 @@ class HomeScene extends Component {
       // console.warn("json.data"+JSON.stringify(json));
       this.setState ({discounts: json.data});
     } catch (error) {
+      alert (error);
+    }
+  }
+  requestLogin2 () {
+    let response=   HttpUtils.fetchData("POST",api.post_Login,"mobile=15901646312&password=12345687");
+    console.warn ('json.data55:' + response.json);
+    let json =  response.json;
+    console.warn ('json.data22:' + JSON.stringify (response));
+  }
+  async requestLogin () {
+    try {
+      let response = await fetch (api.post_Login, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'mobile=15901646312&password=12345687',
+        // body: JSON.stringify({
+        //   mobile: '15901646312',
+        //   password: '12345687',
+        // })
+      });
+      let json = await response.json ();
+      console.warn ('json.data' + JSON.stringify (json));
+      console.warn ('json.datamsg:' + JSON.stringify (json.retMsg));
+      // this.setState ({discounts: json.data});
+    } catch (error) {
+      console.warn ('erroor:' + error);
       alert (error);
     }
   }
@@ -281,20 +313,19 @@ class HomeScene extends Component {
     });
   }
   render () {
-      return (
-        <View style={styles.container}>
-          <FlatList
-            data={this.state.dataList}
-            keyExtractor={this.keyExtractor}
-            onRefresh={this.requestData}
-            refreshing={this.state.refreshing}
-            ListHeaderComponent={this.renderHeader}
-            renderItem={this.renderCell}
-          />
-        </View>
-      );
-    }
-  
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.dataList}
+          keyExtractor={this.keyExtractor}
+          onRefresh={this.requestData}
+          refreshing={this.state.refreshing}
+          ListHeaderComponent={this.renderHeader}
+          renderItem={this.renderCell}
+        />
+      </View>
+    );
+  }
 }
 
 // define your styles

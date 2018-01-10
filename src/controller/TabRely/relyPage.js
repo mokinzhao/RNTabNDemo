@@ -3,167 +3,312 @@
  */
 
 //import liraries
-import React, { PureComponent } from 'react'
-import { View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  ListView,
+  Image,
+  StatusBar,
+  FlatList,
+} from 'react-native';
 
-import { Heading1, Heading2, Paragraph } from '../../widget/Text'
-import { screen, system, tool } from '../../common'
-import { color, DetailCell, NavigationItem, SpacingView } from '../../widget'
+import {Heading1, Heading2, Paragraph} from '../../widget/Text';
+import {
+  color,
+  Button,
+  NavigationItem,
+  SearchBar,
+  SpacingView,
+} from '../../widget';
 
+import {screen, system} from '../../common';
+import api from '../../api';
+import HttpUtils from '../../utils/HttpUtils';
+import Swiper from 'react-native-swiper';
+const loading = require ('../../res/img/Home/loading.gif');
+import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell';
+
+const Slide = props => {
+  return (
+    <View style={styles.slide}>
+      <Image
+        onLoad={props.loadHandle.bind (null, props.i)}
+        style={styles.image}
+        source={{uri: props.uri}}
+      />
+      {/* 暂时注释掉没有lodingimg */}
+      {/* {!props.loaded &&
+        <View style={styles.loadingView}>
+          <Image style={styles.loadingImage} source={loading} />
+        </View>} */}
+    </View>
+  );
+};
 // create a component
-class relyPage extends PureComponent {
+class RelyScene extends Component {
+  static navigationOptions = ({navigation}) => ({
+    headerTitle: (
+      <TouchableOpacity style={styles.searchBar}>
+        <Image
+          source={require ('../../res/img//Home/search_icon.png')}
+          style={styles.searchIcon}
+        />
+        <Paragraph>搜索</Paragraph>
+      </TouchableOpacity>
+    ),
+    // headerRight: (
+    //     <NavigationItem
+    //         icon={require('../../res/img//Home/icon_navigationItem_message_white.png')}
+    //         onPress={() => {
 
-    static navigationOptions = ({ navigation }) => ({
-        title: '云车之家',
-       
-        headerRight: (
-            
-            <View style={{ flexDirection: 'row' }}>
-                <NavigationItem
-                    icon={require('../../res/img/Mine/icon_navigationItem_set_white.png')}
-                    onPress={() => {
+    //         }}
+    //     />
+    // ),
+    headerLeft: (
+      <NavigationItem
+        title="上海"
+        titleStyle={{color: 'black'}}
+        onPress={() => {}}
+      />
+    ),
+    headerStyle: {backgroundColor: color.theme},
+  });
 
-                    }}
+  state: {
+    discounts: Array<Object>,
+    dataList: Array<Object>,
+    refreshing: boolean,
+  };
+
+  constructor (props: Object) {
+    super (props);
+
+    this.state = {
+      discounts: [],
+      dataList: [],
+      refreshing: false,
+      swiperShow: false,
+      imgList: [
+        'https://gitlab.pro/yuji/demo/uploads/d6133098b53fe1a5f3c5c00cf3c2d670/DVrj5Hz.jpg_1',
+        'https://gitlab.pro/yuji/demo/uploads/2d5122a2504e5cbdf01f4fcf85f2594b/Mwb8VWH.jpg',
+        'https://gitlab.pro/yuji/demo/uploads/4421f77012d43a0b4e7cfbe1144aac7c/XFVzKhq.jpg',
+        'https://gitlab.pro/yuji/demo/uploads/2d5122a2504e5cbdf01f4fcf85f2594b/Mwb8VWH.jpg',
+      ],
+      loadQueue: [0, 0, 0, 0],
+    };
+    // this.loadHandle = this.loadHandle.bind (this);
+    {
+       (this: any).loadHandle = this.loadHandle.bind (this);
+    }
+    {
+       (this: any).requestData = this.requestData.bind (this);
+    }
+    {
+       (this: any).renderCell = this.renderCell.bind (this);
+    }
+    {
+       (this: any).onCellSelected = this.onCellSelected.bind (this);
+    }
+    {
+       (this: any).keyExtractor = this.keyExtractor.bind (this);
+    }
+    {
+       (this: any).renderHeader = this.renderHeader.bind (this);
+    }
+    {
+       (this: any).onGridSelected = this.onGridSelected.bind (this);
+    }
+    {
+       (this: any).onMenuSelected = this.onMenuSelected.bind (this);
+    }
+  }
+
+  componentDidMount () {
+    this.requestData ();
+    setTimeout (() => {
+      this.setState ({
+        swiperShow: true,
+      });
+    }, 0);
+  }
+
+  requestData () {
+    this.setState ({refreshing: true});
+    this.requestRecommend ();
+  }
+
+   requestRecommend () {
+    HttpUtils.fetchData ('GET', api.recommend).then (v => {
+      let dataList = v.result.data.map (info => {
+        return {
+          id: info.id,
+          imageUrl: info.squareimgurl,
+          title: info.mname,
+          subtitle: `[${info.range}]${info.title}`,
+          price: info.price,
+        };
+      });
+      this.setState ({
+        dataList: dataList,
+        refreshing: false,
+      });
+    });
+  }
+
+
+  renderCell (info: Object) {
+    return <GroupPurchaseCell info={info.item} onPress={this.onCellSelected} />;
+  }
+
+  onCellSelected (info: Object) {
+    StatusBar.setBarStyle ('default', false);
+    this.props.navigation.navigate ('GroupPurchase', {info: info});
+  }
+
+  keyExtractor (item: Object, index: number) {
+    return item.id;
+  }
+
+  renderHeader () {
+    if (this.state.swiperShow) {
+      return (
+        <View>
+          <View style={{width: '100%', height: 180}}>
+            <Swiper
+              loadMinimal={false}
+              loadMinimalSize={1}
+              style={styles.wrapper}
+              autoplay
+            >
+              {this.state.imgList.map ((item, i) => (
+                <Slide
+                  loadHandle={this.loadHandle}
+                  loaded={!!this.state.loadQueue[i]}
+                  uri={item}
+                  i={i}
+                  key={i}
                 />
-                <NavigationItem
-                    icon={require('../../res/img/Home/icon_navigationItem_message_white.png')}
-                    onPress={() => {
+              ))}
+            </Swiper>
+          </View>
+          <SpacingView />
+          <View style={styles.recommendHeader}>
+            <Heading2>优质挂靠</Heading2>
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View>
 
-                    }}
-                />
-            </View>
-        ),
-       
-        headerStyle: { backgroundColor: color.theme },
-    })
-
-    state: {
-        isRefreshing: boolean
+          <SpacingView />
+          <View style={styles.recommendHeader}>
+            <Heading2>优质挂靠</Heading2>
+          </View>
+        </View>
+      );
     }
+  }
 
-    constructor(props: Object) {
-        super(props)
+  onGridSelected (index: number) {
+    let discount = this.state.discounts[index];
 
-        this.state = {
-            isRefreshing: false
-        }
+    if (discount.type == 1) {
+      StatusBar.setBarStyle ('default', false);
+
+      let location = discount.tplurl.indexOf ('http');
+      let url = discount.tplurl.slice (location);
+      this.props.navigation.navigate ('Web', {url: url});
     }
+  }
 
-    onHeaderRefresh() {
-        this.setState({ isRefreshing: true })
-
-        setTimeout(() => {
-            this.setState({ isRefreshing: false })
-        }, 2000);
-    }
-
-    renderCells() {
-        let cells = []
-        let dataList = this.getDataList()
-        for (let i = 0; i < dataList.length; i++) {
-            let sublist = dataList[i]
-            for (let j = 0; j < sublist.length; j++) {
-                let data = sublist[j]
-                let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title} />
-                cells.push(cell)
-            }
-            cells.push(<SpacingView key={i} />)
-        }
-
-        return (
-            <View style={{ flex: 1 }}>
-                {cells}
-            </View>
-        )
-    }
-
-    renderHeader() {
-        return (
-            <View style={styles.header}>
-                <View style={styles.userContainer}>
-                    <Image style={styles.avatar} source={require('../../res/img/Mine/avatar.png')} />
-                    <View>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Heading1 style={{ color: 'white' }}>素敌</Heading1>
-                            <Image style={{ marginLeft: 4 }} source={require('../../res/img/Mine/beauty_technician_v15.png')} />
-                        </View>
-                        <Paragraph style={{ color: 'white', marginTop: 4 }}>个人信息 ></Paragraph>
-                    </View>
-                </View>
-            </View>
-        )
-    }
-
-    render() {
-        return (
-            <View style={{ flex: 1, backgroundColor: color.background }}>
-                <View style={{ position: 'absolute', width: screen.width, height: screen.height / 2, backgroundColor: color.theme }} />
-                <ScrollView
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={this.state.isRefreshing}
-                            onRefresh={() => this.onHeaderRefresh()}
-                            tintColor='gray'
-                        />
-                    }>
-                    {this.renderHeader()}
-                    <SpacingView />
-                    {this.renderCells()}
-                </ScrollView>
-            </View>
-        );
-    }
-
-    getDataList() {
-        return (
-            [
-                [
-                    { title: '我的钱包', subtitle: '办信用卡', image: require('../../res/img/Mine/icon_mine_wallet.png') },
-                    { title: '余额', subtitle: '￥95872385', image: require('../../res/img/Mine/icon_mine_balance.png') },
-                    { title: '抵用券', subtitle: '63', image: require('../../res/img/Mine/icon_mine_voucher.png') },
-                    { title: '会员卡', subtitle: '2', image: require('../../res/img/Mine/icon_mine_membercard.png') }
-                ],
-                [
-                    { title: '好友去哪', image: require('../../res/img/Mine/icon_mine_friends.png') },
-                    { title: '我的评价', image: require('../../res/img/Mine/icon_mine_comment.png') },
-                    { title: '我的收藏', image: require('../../res/img/Mine/icon_mine_collection.png') },
-                    { title: '会员中心', subtitle: 'v15', image: require('../../res/img/Mine/icon_mine_membercenter.png') },
-                    { title: '积分商城', subtitle: '好礼已上线', image: require('../../res/img/Mine/icon_mine_member.png') }
-                ],
-                [
-                    { title: '客服中心', image: require('../../res/img/Mine/icon_mine_customerService.png') },
-                    { title: '关于美团', subtitle: '我要合作', image: require('../../res/img/Mine/icon_mine_aboutmeituan.png') }
-                ]
-            ]
-        )
-    }
-
+  onMenuSelected (index: number) {
+    alert (index);
+  }
+  loadHandle (i) {
+    let loadQueue = this.state.loadQueue;
+    loadQueue[i] = 1;
+    this.setState ({
+      loadQueue,
+    });
+  }
+  render () {
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.dataList}
+          keyExtractor={this.keyExtractor}
+          onRefresh={this.requestData}
+          refreshing={this.state.refreshing}
+          ListHeaderComponent={this.renderHeader}
+          renderItem={this.renderCell}
+        />
+      </View>
+    );
+  }
 }
 
 // define your styles
-const styles = StyleSheet.create({
-    header: {
-        backgroundColor: color.theme,
-        paddingBottom: 20
-    },
-    icon: {
-        width: 27,
-        height: 27,
-    },
-    userContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        margin: 10,
-    },
-    avatar: {
-        width: 50,
-        height: 50,
-        marginRight: 10,
-        borderRadius: 25,
-        borderWidth: 2,
-        borderColor: '#51D3C6'
-    }
+const styles = StyleSheet.create ({
+  container: {
+    flex: 1,
+    backgroundColor: color.background,
+  },
+  recommendHeader: {
+    height: 35,
+    justifyContent: 'center',
+    borderWidth: screen.onePixel,
+    borderColor: color.border,
+    paddingVertical: 8,
+    paddingLeft: 20,
+    backgroundColor: 'white',
+  },
+  searchBar: {
+    width: screen.width * 0.7,
+    height: 30,
+    borderRadius: 19,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    alignSelf: 'center',
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    margin: 5,
+  },
+  wrapper: {},
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  image: {
+    width: '100%',
+    flex: 1,
+    backgroundColor: 'transparent',
+  },
+
+  loadingView: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,.5)',
+  },
+  loadingImage: {
+    width: 60,
+    height: 60,
+  },
 });
 
 //make this component available to the app
-export default relyPage;
+export default RelyScene;

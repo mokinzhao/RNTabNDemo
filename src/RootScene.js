@@ -13,7 +13,7 @@ import TabBarItem from './widget/TabBarItem'
 
 import HomeScene from './controller/TabHome/homePage'
 import OrderScene from './controller/TabCar/carPage'
-import NearbyScene from './controller/TabRely/relyPage'
+import RelyScene from './controller/TabRely/relyPage'
 import MineScene from './controller/TabMine/minePage'
 
 import WebScene from './widget/WebScene'
@@ -79,7 +79,7 @@ const Tab = TabNavigator(
             }),
         },
         Nearby: {
-            screen: NearbyScene,
+            screen: RelyScene,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: '挂靠',
                 tabBarIcon: ({ focused, tintColor }) => (
@@ -93,20 +93,20 @@ const Tab = TabNavigator(
             }),
         },
 
-        Order: {
-            screen: OrderScene,
-            navigationOptions: ({ navigation }) => ({
-                tabBarLabel: '新车',
-                tabBarIcon: ({ focused, tintColor }) => (
-                    <TabBarItem
-                        tintColor={tintColor}
-                        focused={focused}
-                        normalImage={require('./res/img/tabbar/pfb_tabbar_order.png')}
-                        selectedImage={require('./res/img/tabbar/pfb_tabbar_order_selected.png')}
-                    />
-                )
-            }),
-        },
+        // Order: {
+        //     screen: OrderScene,
+        //     navigationOptions: ({ navigation }) => ({
+        //         tabBarLabel: '新车',
+        //         tabBarIcon: ({ focused, tintColor }) => (
+        //             <TabBarItem
+        //                 tintColor={tintColor}
+        //                 focused={focused}
+        //                 normalImage={require('./res/img/tabbar/pfb_tabbar_order.png')}
+        //                 selectedImage={require('./res/img/tabbar/pfb_tabbar_order_selected.png')}
+        //             />
+        //         )
+        //     }),
+        // },
 
         Mine: {
             screen: MineScene,

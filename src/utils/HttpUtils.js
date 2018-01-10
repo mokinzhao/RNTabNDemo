@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react';
 import {AsyncStorage} from 'react-native';
-
+import Tools from './netTools';
 export default class HttpUtils extends Component {
   static queryParams (params) {
     return Object.keys (params)
@@ -15,7 +15,7 @@ export default class HttpUtils extends Component {
       .join ('&');
   }
   /** 
-     * 网络请求封装方法
+     * http网络请求封装
      * @param 请求方法x-www-form-urlencoded
      * @param 请求URL
      * @param 请求参数（字符串拼接）
@@ -26,68 +26,43 @@ export default class HttpUtils extends Component {
       let postBody = null;
       if (reqMethod == 'POST') {
         postBody = JSON.stringify (reqParams);
+        // console.warn ('reqParams:' + postBody)
       }
       if (reqMethod == 'GET') {
-        reqUrl +=
+        if(reqParams){
+          reqUrl +=
           (reqUrl.indexOf ('?') === -1 ? '?' : '&') +
           HttpUtils.queryParams (reqParams);
+        }
+        //console.warn ('reqParams:' + reqParams)
       }
-      // console.warn ('reqParams:' + reqParams)
+
       let response = await fetch (reqUrl, {
         method: reqMethod,
         headers: Object.assign (headers, {
-          //根据后台约定调整Content-Type和body
-          //'Content-Type': 'application/json',
+          //"accesstoken":token  //用户登陆后返回的token，某些涉及用户数据的接口需要在header中加上token
+          //'Content-Type': 'application/json',//根据Content-Type类型选择方式
           'Content-Type': 'application/x-www-form-urlencoded',
-        }),
-        body: reqParams,
-        //body = postBody;
-      });
-      let responseJson = await response.json ();
-      // console.warn ('responseJson:' + JSON.stringify (responseJson))
-      return {
-        json: responseJson,
-        resp: response,
-      };
-    } catch (error) {
-      console.warn ('error:' + error);
-      //console.error(error);
-    }
-  }
-  /** 
-     * 网络请求封装方法
-     * @param 请求方法json
-     * @param 请求URL
-     * @param 请求参数（字典形式）
-     */
-  static async fetchDataJson (reqMethod, reqUrl, reqParams) {
-    try {
-      let headers = JSON.parse (await AsyncStorage.getItem ('headers')) || {};
-      let postBody = null;
-      if (reqMethod == 'POST') {
-        postBody = JSON.stringify (reqParams);
-      }
-      if (reqMethod == 'GET') {
-        reqUrl +=
-          (reqUrl.indexOf ('?') === -1 ? '?' : '&') +
-          HttpUtils.queryParams (reqParams);
-      }
-      // console.warn ('reqParams:' + postBody)
-      let response = await fetch (reqUrl, {
-        method: reqMethod,
-        headers: Object.assign (headers, {
-          'Content-Type': 'application/json',
         }),
         body: postBody,
       });
       let responseJson = await response.json ();
-      // console.warn ('responseJson:' + JSON.stringify (responseJson))
+      let result = JSON.parse (JSON.stringify (responseJson));
+      // console.warn ('responseJson:' + JSON.stringify (responseJson));
+      //是否解析成功
+     /* if (result && result.retCode == '0') {
+        //TODO: 是否统一处理
+      } else {
+        console.warn ('请求失败：' + reqUrl);
+      }*/
       return {
+        result: result,
         json: responseJson,
         resp: response,
       };
     } catch (error) {
       console.warn ('error:' + error);
+      alert (error);
       //console.error(error);
     }
   }

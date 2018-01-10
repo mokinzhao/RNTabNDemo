@@ -145,15 +145,11 @@ class HomeScene extends Component {
     this.requestDiscount ();
     this.requestRecommend ();
     this.requestLogin ();
-    this.requestLogin2();
   }
 
-  async requestRecommend () {
-    try {
-      let response = await fetch (api.recommend);
-      let json = await response.json ();
-
-      let dataList = json.data.map (info => {
+   requestRecommend () {
+    HttpUtils.fetchData ('GET', api.recommend).then (v => {
+      let dataList = v.result.data.map (info => {
         return {
           id: info.id,
           imageUrl: info.squareimgurl,
@@ -162,53 +158,29 @@ class HomeScene extends Component {
           price: info.price,
         };
       });
-
       this.setState ({
         dataList: dataList,
         refreshing: false,
       });
-    } catch (error) {
-      this.setState ({refreshing: false});
-    }
+    });
   }
 
-  async requestDiscount () {
-    try {
-      let response = await fetch (api.discount);
-      let json = await response.json ();
-      // console.warn("json.data"+JSON.stringify(json));
-      this.setState ({discounts: json.data});
-    } catch (error) {
-      alert (error);
-    }
+   requestDiscount () {
+    HttpUtils.fetchData ('GET', api.discount).then (v => {
+      // console.warn("json.data"+JSON.stringify(v));
+      this.setState ({discounts: v.data});
+    });
   }
-  requestLogin2 () {
-    let response=   HttpUtils.fetchData("POST",api.post_Login,"mobile=15901646312&password=12345687");
-    console.warn ('json.data55:' + response.json);
-    let json =  response.json;
-    console.warn ('json.data22:' + JSON.stringify (response));
-  }
-  async requestLogin () {
-    try {
-      let response = await fetch (api.post_Login, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'mobile=15901646312&password=12345687',
-        // body: JSON.stringify({
-        //   mobile: '15901646312',
-        //   password: '12345687',
-        // })
-      });
-      let json = await response.json ();
-      console.warn ('json.data' + JSON.stringify (json));
-      console.warn ('json.datamsg:' + JSON.stringify (json.retMsg));
-      // this.setState ({discounts: json.data});
-    } catch (error) {
-      console.warn ('erroor:' + error);
-      alert (error);
-    }
+  //网络请求
+  requestLogin () {
+    let reqParams = {
+      mobile: '1590000000',
+      password: '123456',
+    };
+    HttpUtils.fetchData ('POST', api.post_Login, reqParams).then (v => {
+      // console.warn ('json.dataretMsg:' + v.result.retMsg);
+      // console.warn ('json.data:' + JSON.stringify (v.result));
+    });
   }
 
   renderCell (info: Object) {

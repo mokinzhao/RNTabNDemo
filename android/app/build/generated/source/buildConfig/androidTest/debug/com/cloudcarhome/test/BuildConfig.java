@@ -9,5 +9,7 @@ public final class BuildConfig {
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "1.0";
+  public static final String VERSION_NAME = "1.0.0";
+  // Fields from build type: debug
+  public static final String CODEPUSH_KEY = "cR7HMGr6xaIFQpIJBFaQ5i28w97j4ksvOXqog";
 }

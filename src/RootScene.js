@@ -18,7 +18,7 @@ import MineScene from './controller/TabMine/minePage'
 
 import WebScene from './widget/WebScene'
 import GroupPurchaseScene from './controller/GroupPurchase/GroupPurchaseScene'
-
+import CodePush from "react-native-code-push";
 const lightContentScenes = ['Home', 'Mine']
 
 function getCurrentRouteName(navigationState) {
@@ -60,6 +60,8 @@ class RootScene extends PureComponent {
             />
         );
     }
+   
+ 
 }
 
 const Tab = TabNavigator(
@@ -153,5 +155,6 @@ const Navigator = StackNavigator(
         },
     }
 );
+ 
 //make this component available to the app
 export default RootScene;

@@ -12,6 +12,7 @@
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.48",
+    "react-native-code-push": "^5.2.1",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-splash-screen": "^3.0.6",
     "react-native-swiper": "^1.5.13",

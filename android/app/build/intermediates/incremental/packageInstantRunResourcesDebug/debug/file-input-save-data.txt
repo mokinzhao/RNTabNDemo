@@ -1,11 +1,15 @@
 #Internal package file, do not edit.
-#Thu Dec 28 15:25:04 CST 2017
+#Sun Jan 21 14:38:03 CST 2018
 1.base=/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/assets/debug
+2.path=index.android.bundle
 0.baseType=DIRECTORY
+2.base=/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/assets/debug
+2.set=ASSET
 1.baseType=DIRECTORY
-count=2
+count=3
 1.set=ASSET
 0.path=index.android.bundle.meta
 0.set=ASSET
 0.base=/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/assets/debug
-1.path=index.android.bundle
+2.baseType=DIRECTORY
+1.path=CodePushHash

@@ -12,7 +12,9 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
+project.ext.react = [
+        nodeExecutableAndArgs : ["/usr/local/bin/node"]
+];
 allprojects {
     repositories {
         mavenLocal()

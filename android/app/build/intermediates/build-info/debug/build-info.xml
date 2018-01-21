@@ -5,31 +5,35 @@
     build-mode="COLD"
     density="xhdpi"
     format="10"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1514445903310"
+    timestamp="1516516682176"
     token="9172796495222449114"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="72" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="12" />
     <task
         name="verifier"
-        duration="0" />
+        duration="1" />
 
+    <artifact
+        location="/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
     <artifact
         location="/Users/mokinzhao/work/RNTabNDemo/android/app/build/outputs/apk/debug/app-debug.apk"
         type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1514445723562"
+        timestamp="1516516588204"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
@@ -71,16 +75,11 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1514445810500"
+        timestamp="1516516682176"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/mokinzhao/work/RNTabNDemo/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1514445903310"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/mokinzhao/work/RNTabNDemo/android/app/build/outputs/apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />

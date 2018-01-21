@@ -72,11 +72,12 @@ import com.android.build.OutputFile
  * ]
  */
 
-project.ext.react = [
-    entryFile: "index.js"
-]
+//project.ext.react = [
+//    entryFile: "index.js"
+//]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -92,7 +93,8 @@ def enableSeparateBuildPerCPUArchitecture = false
  * Run Proguard to shrink the Java bytecode in release builds.
  */
 def enableProguardInReleaseBuilds = false
-
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 android {
     compileSdkVersion 23
     buildToolsVersion '26.0.2'
@@ -102,7 +104,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -116,9 +118,20 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // CodePush updates should not be tested in Debug mode
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_staging")+'"'
+        }
+
+        releaseStaging {
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_production")+'"'
+            matchingFallbacks = ['debug', 'release'] //add this line
+        }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_staging")+'"'
+
         }
     }
     // applicationVariants are e.g. debug, release
@@ -137,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-code-push')
 
     compile project(':react-native-splash-screen')//From node_modules react-native-splash-screen
     compile fileTree(dir: "libs", include: ["*.jar"])
